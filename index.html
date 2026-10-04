@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CiKiZz Store — Ready Script And Sewa Bot</title>
+<meta name="description" content="CiKiZz Store - Script Bot WhatsApp, Script CiKiZz MD V2, Base Kosong, & Sewa Bot Store." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050914;
+    --card:#0d1830;
+    --card-2:#122042;
+    --blue:#3b82f6;
+    --blue-light:#60a5fa;
+    --blue-dark:#1e40af;
+    --cyan:#22d3ee;
+    --violet:#818cf8;
+    --text:#eef4ff;
+    --muted:#94a3c0;
+    --border:rgba(96,165,250,0.18);
+    --border-hover:rgba(96,165,250,0.55);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(59,130,246,.18), transparent 50%),
+      radial-gradient(circle at 90% 100%, rgba(34,211,238,.12), transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(129,140,248,.06), transparent 60%);
+    z-index:-2;pointer-events:none;
+  }
+  body::after{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      linear-gradient(rgba(96,165,250,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96,165,250,.03) 1px, transparent 1px);
+    background-size:50px 50px;
+    z-index:-1;pointer-events:none;
+    mask-image:radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  }
+
+  /* NAVBAR */
+  nav{
+    position:sticky;top:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 6vw;
+    background:rgba(5,9,20,.7);
+    backdrop-filter:blur(20px) saturate(180%);
+    -webkit-backdrop-filter:blur(20px) saturate(180%);
+    border-bottom:1px solid var(--border);
+  }
+  .logo-wrap{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .logo-badge{
+    width:38px;height:38px;border-radius:11px;
+    background:linear-gradient(135deg,var(--blue-light),var(--cyan));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 15px rgba(59,130,246,.4);
+    color:#fff;
+  }
+  .logo-badge svg{width:20px;height:20px;}
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;font-size:1.15rem;letter-spacing:-.3px;
+    color:#fff;
+  }
+  .logo span{
+    background:linear-gradient(135deg,var(--blue-light),var(--cyan));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .nav-links{display:flex;gap:8px;align-items:center;}
+  .nav-links a{
+    color:var(--muted);text-decoration:none;font-size:.88rem;
+    transition:.25s;font-weight:500;
+    padding:8px 14px;border-radius:8px;
+  }
+  .nav-links a:hover{color:#fff;background:rgba(96,165,250,.1);}
+
+  /* HERO */
+  header.hero{padding:100px 6vw 80px;text-align:center;position:relative;}
+  .hero .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--border);
+    color:var(--blue-light);
+    padding:7px 16px;border-radius:50px;
+    font-size:.76rem;letter-spacing:1.5px;
+    text-transform:uppercase;font-weight:600;
+    margin-bottom:26px;
+    background:rgba(59,130,246,.08);
+    backdrop-filter:blur(10px);
+  }
+  .hero .badge svg{width:12px;height:12px;color:var(--cyan);}
+  .hero h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(2rem,5.5vw,3.8rem);
+    line-height:1.1;letter-spacing:-1px;
+    color:#fff;margin-bottom:20px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(135deg,#60a5fa 0%,#22d3ee 50%,#818cf8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .hero p{color:var(--muted);max-width:620px;margin:0 auto;font-size:1.02rem;}
+  .hero .cta-wrap{margin-top:38px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  /* ============= BUTTONS ============= */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 30px;border-radius:14px;
+    font-weight:600;font-size:.94rem;text-decoration:none;
+    transition:all .3s cubic-bezier(.2,.7,.3,1);
+    border:none;cursor:pointer;
+    letter-spacing:.2px;position:relative;overflow:hidden;
+    font-family:inherit;
+  }
+  .btn svg{width:18px;height:18px;flex-shrink:0;}
+
+  .btn-primary{
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+    color:#fff;
+    box-shadow:0 10px 25px -8px rgba(59,130,246,.6), inset 0 1px 0 rgba(255,255,255,.15);
+  }
+  .btn-primary::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg,#60a5fa,#3b82f6,#22d3ee);
+    opacity:0;transition:.4s;z-index:-1;
+  }
+  .btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 40px -10px rgba(59,130,246,.7), inset 0 1px 0 rgba(255,255,255,.2);
+  }
+  .btn-primary:hover::before{opacity:1;}
+
+  .btn-ghost{
+    background:rgba(96,165,250,.06);
+    color:var(--blue-light);
+    border:1px solid var(--border);
+    backdrop-filter:blur(10px);
+  }
+  .btn-ghost:hover{
+    background:rgba(96,165,250,.14);
+    border-color:var(--blue-light);color:#fff;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px -8px rgba(59,130,246,.4);
+  }
+
+  /* SECTION */
+  section{padding:70px 6vw;}
+  .section-head{text-align:center;margin-bottom:52px;}
+  .section-head .tag{
+    display:inline-block;
+    color:var(--blue-light);font-size:.75rem;letter-spacing:3px;
+    text-transform:uppercase;font-weight:700;
+    padding:6px 14px;border-radius:50px;
+    background:rgba(96,165,250,.08);
+    border:1px solid var(--border);
+    margin-bottom:14px;
+  }
+  .section-head h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(1.7rem,3.8vw,2.5rem);
+    font-weight:700;letter-spacing:-.6px;color:#fff;
+  }
+  .section-head h2 .grad{
+    background:linear-gradient(135deg,#60a5fa,#22d3ee);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .section-head .sub{
+    color:var(--muted);font-size:.92rem;margin-top:12px;
+    max-width:520px;margin-left:auto;margin-right:auto;
+  }
+
+  /* PRODUCT GRID */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;max-width:1200px;margin:0 auto;
+  }
+  .card{
+    background:linear-gradient(165deg,rgba(13,24,48,.9),rgba(18,32,66,.85));
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:26px 24px 22px;
+    position:relative;overflow:hidden;
+    transition:all .4s cubic-bezier(.2,.7,.3,1);
+    display:flex;flex-direction:column;
+    backdrop-filter:blur(10px);
+  }
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(96,165,250,.7),transparent);
+    opacity:0;transition:.4s;
+  }
+  .card::after{
+    content:"";position:absolute;top:-50%;right:-50%;
+    width:200px;height:200px;
+    background:radial-gradient(circle,rgba(59,130,246,.15),transparent 70%);
+    opacity:0;transition:.5s;pointer-events:none;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    border-color:var(--border-hover);
+    box-shadow:
+      0 25px 50px -15px rgba(0,0,0,.7),
+      0 0 0 1px rgba(96,165,250,.15),
+      0 0 40px -10px rgba(59,130,246,.3);
+  }
+  .card:hover::before{opacity:1;}
+  .card:hover::after{opacity:1;}
+
+  /* Card badge */
+  .card-badge{
+    position:absolute;top:16px;right:16px;
+    font-size:.66rem;font-weight:700;letter-spacing:1px;
+    padding:5px 11px;border-radius:50px;
+    text-transform:uppercase;z-index:2;
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .card-badge svg{width:11px;height:11px;}
+  .badge-hot{
+    background:linear-gradient(135deg,#f43f5e,#e11d48);
+    color:#fff;box-shadow:0 4px 15px rgba(244,63,94,.5);
+  }
+  .badge-best{
+    background:linear-gradient(135deg,#60a5fa,#22d3ee);
+    color:#0a1226;box-shadow:0 4px 15px rgba(96,165,250,.5);
+  }
+  .badge-new{
+    background:linear-gradient(135deg,#a78bfa,#818cf8);
+    color:#fff;box-shadow:0 4px 15px rgba(139,92,246,.5);
+  }
+
+  /* Icon box (SVG based) */
+  .card .icon{
+    width:56px;height:56px;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,rgba(59,130,246,.2),rgba(34,211,238,.1));
+    border:1px solid var(--border);
+    margin-bottom:16px;
+    transition:.4s;position:relative;z-index:1;
+    color:var(--blue-light);
+  }
+  .card .icon svg{
+    width:28px;height:28px;
+    stroke:currentColor;
+    stroke-width:1.8;
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .card:hover .icon{
+    transform:scale(1.08) rotate(-4deg);
+    box-shadow:0 8px 25px rgba(59,130,246,.35);
+    border-color:var(--border-hover);
+    color:var(--cyan);
+  }
+
+  .card h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.05rem;font-weight:700;
+    color:#e0edff;letter-spacing:-.2px;
+    margin-bottom:8px;line-height:1.35;
+    position:relative;z-index:1;
+  }
+  .card .desc{
+    color:var(--muted);font-size:.85rem;flex-grow:1;
+    margin-bottom:20px;position:relative;z-index:1;
+  }
+  .price-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:16px;border-top:1px solid var(--border);
+    margin-bottom:16px;position:relative;z-index:1;
+  }
+  .price{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.5rem;font-weight:700;letter-spacing:-.5px;
+    background:linear-gradient(135deg,#93c5fd,var(--cyan));
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    line-height:1.1;
+  }
+  .price small{
+    font-size:.7rem;color:var(--muted);
+    -webkit-text-fill-color:var(--muted);
+    display:block;font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:500;letter-spacing:1px;
+    text-transform:uppercase;margin-top:2px;
+  }
+
+  /* BUY BUTTON */
+  .btn-buy{
+    position:relative;width:100%;
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 20px;border-radius:14px;
+    background:linear-gradient(135deg,#2563eb,#1e40af);
+    color:#fff;font-weight:700;font-size:.9rem;
+    text-decoration:none;
+    transition:all .3s cubic-bezier(.2,.7,.3,1);
+    letter-spacing:.3px;overflow:hidden;z-index:1;
+    box-shadow:0 10px 25px -8px rgba(37,99,235,.6), inset 0 1px 0 rgba(255,255,255,.15);
+  }
+  .btn-buy svg{
+    width:17px;height:17px;flex-shrink:0;
+    transition:.3s;
+    stroke:currentColor;stroke-width:2;
+    fill:none;stroke-linecap:round;stroke-linejoin:round;
+  }
+  .btn-buy::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg,#3b82f6,#22d3ee);
+    opacity:0;transition:.4s;z-index:-1;
+  }
+  .btn-buy::after{
+    content:"";position:absolute;
+    top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+    transition:.6s;transform:skewX(-25deg);
+  }
+  .btn-buy:hover{
+    transform:translateY(-2px);
+    box-shadow:0 15px 35px -8px rgba(59,130,246,.75), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .btn-buy:hover::before{opacity:1;}
+  .btn-buy:hover::after{left:130%;}
+  .btn-buy:hover svg{transform:translateX(3px) scale(1.1);}
+  .btn-buy:active{transform:translateY(0);}
+
+  /* FOOTER */
+  footer{
+    padding:60px 6vw 30px;
+    border-top:1px solid var(--border);
+    text-align:center;
+    background:linear-gradient(180deg,transparent,rgba(59,130,246,.05));
+    position:relative;
+  }
+  footer .logo-wrap{justify-content:center;margin-bottom:14px;}
+  footer p{color:var(--muted);font-size:.86rem;margin-bottom:8px;}
+  footer .credit{margin-top:24px;font-size:.83rem;color:var(--muted);}
+  footer .credit span{
+    background:linear-gradient(135deg,#60a5fa,#22d3ee,#818cf8);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-weight:800;letter-spacing:.5px;
+  }
+  footer .wa-link{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:8px;
+    color:var(--blue-light);text-decoration:none;font-size:.88rem;
+    padding:8px 16px;border-radius:50px;
+    border:1px solid var(--border);
+    background:rgba(96,165,250,.06);
+    transition:.3s;
+  }
+  footer .wa-link svg{width:16px;height:16px;}
+  footer .wa-link:hover{
+    background:rgba(96,165,250,.14);
+    border-color:var(--blue-light);color:#fff;
+  }
+
+  /* Floating WA */
+  .float-wa{
+    position:fixed;bottom:24px;right:24px;z-index:99;
+    width:60px;height:60px;border-radius:50%;
+    background:linear-gradient(135deg,#25D366,#128C7E);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 30px rgba(37,211,102,.5), 0 0 0 0 rgba(37,211,102,.7);
+    transition:.3s;text-decoration:none;
+    animation:floatPulse 2.5s infinite;
+  }
+  @keyframes floatPulse{
+    0%{box-shadow:0 10px 30px rgba(37,211,102,.5), 0 0 0 0 rgba(37,211,102,.6);}
+    70%{box-shadow:0 10px 30px rgba(37,211,102,.5), 0 0 0 18px rgba(37,211,102,0);}
+    100%{box-shadow:0 10px 30px rgba(37,211,102,.5), 0 0 0 0 rgba(37,211,102,0);}
+  }
+  .float-wa:hover{transform:scale(1.1) rotate(5deg);}
+  .float-wa svg{width:30px;height:30px;fill:#fff;}
+
+  @media(max-width:640px){
+    nav{padding:14px 5vw;}
+    .nav-links{display:none;}
+    header.hero{padding:70px 5vw 50px;}
+    section{padding:50px 5vw;}
+    .card{padding:22px 20px 20px;}
+    .price{font-size:1.35rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="logo-wrap">
+    <div class="logo-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+        <path d="M3 7v10l9 4 9-4V7"/>
+        <path d="M12 11v10"/>
+      </svg>
+    </div>
+    <div class="logo">CiKiZz <span>Store</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="#produk">Produk</a>
+    <a href="#sewa">Sewa Bot</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="badge">
+    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+    Premium Store • Trusted
+  </div>
+  <h1>CiKiZz Store<br/><span class="grad">Script Bot And Sewa Bot</span></h1>
+  <p>Menyediakan Script Bot WhatsApp berkualitas, Script CiKiZz MD V2, Base Kosong, hingga layanan Sewa Bot Store dengan harga terjangkau & pelayanan cepat.</p>
+  <div class="cta-wrap">
+    <a href="#produk" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      Lihat Produk
+    </a>
+    <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20bertanya%20tentang%20produk." target="_blank" class="btn btn-ghost">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Chat Owner
+    </a>
+  </div>
+</header>
+
+<!-- PRODUK -->
+<section id="produk">
+  <div class="section-head">
+    <div class="tag">Our Products</div>
+    <h2>Daftar <span class="grad">Produk</span></h2>
+    <p class="sub">Pilih produk yang kamu butuhkan, langsung chat owner dengan sekali klik.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- Produk 1: Script Bot WhatsApp — Icon: Bot -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="4" y="8" width="16" height="12" rx="3"/>
+          <path d="M12 4v4"/>
+          <circle cx="12" cy="3" r="1"/>
+          <line x1="9" y1="13" x2="9" y2="14"/>
+          <line x1="15" y1="13" x2="15" y2="14"/>
+          <path d="M2 12v3"/>
+          <path d="M22 12v3"/>
+          <path d="M9 17h6"/>
+        </svg>
+      </div>
+      <h3>Script Bot WhatsApp</h3>
+      <p class="desc">Script bot WhatsApp siap pakai dengan fitur lengkap. Harga bisa nego langsung ke owner.</p>
+      <div class="price-row"><div class="price">20K~50K<small>OWNER</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20memesan%20*SCRIPT%20BOT%20WHATSAPP*.%20Bisa%20info%20harga%20dan%20detailnya%3F" target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Produk 2: Script CiKiZz MD V2 — Icon: Bolt -->
+    <div class="card">
+      <div class="card-badge badge-new">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/>
+        </svg>
+        New
+      </div>
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M13 2L4.5 13.5H12L11 22L19.5 10.5H12L13 2Z"/>
+        </svg>
+      </div>
+      <h3>Script CiKiZz MD V2</h3>
+      <p class="desc">Script CiKiZz MD V2 dengan performa cepat dan stabil. Cocok untuk bot WhatsApp modern.</p>
+      <div class="price-row"><div class="price">25K<small>IDR</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20memesan%20*SCRIPT%20CiKiZz%20MD%20V2*%20seharga%2025K.%20Mohon%20info%20lebih%20lanjut." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Produk 3: Script CiKiZz MD V2 + Free Up — Icon: Diamond -->
+    <div class="card">
+      <div class="card-badge badge-hot">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 3 3 5 5.5 6.5-1.5 4-3.5 8-5.5 13.5-2-5.5-4-9.5-5.5-13.5C9 7 10.5 5 12 2z"/></svg>
+        Hot
+      </div>
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 3h12l4 6-10 12L2 9l4-6z"/>
+          <path d="M2 9h20"/>
+          <path d="M12 3l-4 6 4 12"/>
+          <path d="M12 3l4 6-4 12"/>
+        </svg>
+      </div>
+      <h3>Script CiKiZz MD V2<br/>+ Free Up 1x</h3>
+      <p class="desc">Paket premium Script CiKiZz MD V2 dengan bonus FREE UPDATE 1x. Best value!</p>
+      <div class="price-row"><div class="price">30K<small>Free Up 1x</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20memesan%20*SCRIPT%20CiKiZz%20MD%20V2%20%2B%20FREE%20UP%201X*%20seharga%2030K.%20Mohon%20info%20lebih%20lanjut." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Produk 4: Base Kosong Bot WA — Icon: Package -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+          <line x1="12" y1="22.08" x2="12" y2="12"/>
+        </svg>
+      </div>
+      <h3>Base Kosong Bot WA</h3>
+      <p class="desc">Base kosong untuk bot WhatsApp, siap dikembangkan sesuai kebutuhan kamu.</p>
+      <div class="price-row"><div class="price">15K<small>IDR</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20memesan%20*BASE%20KOSONG%20BOT%20WA*%20seharga%2015K.%20Mohon%20info%20lebih%20lanjut." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SEWA BOT -->
+<section id="sewa">
+  <div class="section-head">
+    <div class="tag">Rental Service</div>
+    <h2>Sewa <span class="grad">Bot Store</span></h2>
+    <p class="sub">Sewa bot store dengan durasi fleksibel, dari mingguan sampai bulanan.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- Sewa 1 Minggu — Calendar -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="12" cy="16" r="1.5"/>
+        </svg>
+      </div>
+      <h3>Sewa 1 Minggu</h3>
+      <p class="desc">Paket sewa bot store jangka pendek, cocok untuk uji coba.</p>
+      <div class="price-row"><div class="price">5K<small>/Minggu</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20menyewa%20*BOT%20STORE%20-%201%20MINGGU*%20seharga%205K." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Sewa 1 Bulan — Calendar + fire badge -->
+    <div class="card">
+      <div class="card-badge badge-hot">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 3 3 5 5.5 6.5-1.5 4-3.5 8-5.5 13.5-2-5.5-4-9.5-5.5-13.5C9 7 10.5 5 12 2z"/></svg>
+        Populer
+      </div>
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="12" cy="16" r="1.5"/>
+        </svg>
+      </div>
+      <h3>Sewa 1 Bulan</h3>
+      <p class="desc">Paket sewa bot store 1 bulan, paling banyak dipilih customer.</p>
+      <div class="price-row"><div class="price">15K<small>/Bulan</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20menyewa%20*BOT%20STORE%20-%201%20BULAN*%20seharga%2015K." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Sewa 2 Bulan -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="12" cy="16" r="1.5"/>
+        </svg>
+      </div>
+      <h3>Sewa 2 Bulan</h3>
+      <p class="desc">Paket sewa 2 bulan dengan harga lebih hemat.</p>
+      <div class="price-row"><div class="price">25K<small>/2 Bulan</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20menyewa%20*BOT%20STORE%20-%202%20BULAN*%20seharga%2025K." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Sewa 3 Bulan -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="12" cy="16" r="1.5"/>
+        </svg>
+      </div>
+      <h3>Sewa 3 Bulan</h3>
+      <p class="desc">Paket sewa 3 bulan, hemat dan stabil.</p>
+      <div class="price-row"><div class="price">32K<small>/3 Bulan</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20menyewa%20*BOT%20STORE%20-%203%20BULAN*%20seharga%2032K." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Sewa 4 Bulan -->
+    <div class="card">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="18" rx="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <circle cx="12" cy="16" r="1.5"/>
+        </svg>
+      </div>
+      <h3>Sewa 4 Bulan</h3>
+      <p class="desc">Paket sewa 4 bulan dengan harga spesial.</p>
+      <div class="price-row"><div class="price">40K<small>/4 Bulan</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20menyewa%20*BOT%20STORE%20-%204%20BULAN*%20seharga%2040K." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+
+    <!-- Sewa 5 Bulan — Crown icon + Best Value -->
+    <div class="card">
+      <div class="card-badge badge-best">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8z"/></svg>
+        Best Value
+      </div>
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 8l4 3 5-6 5 6 4-3-2 11H5L3 8z"/>
+          <line x1="5" y1="21" x2="19" y2="21"/>
+        </svg>
+      </div>
+      <h3>Sewa 5 Bulan</h3>
+      <p class="desc">Paket sewa 5 bulan, paling worth it untuk jangka panjang.</p>
+      <div class="price-row"><div class="price">50K<small>/5 Bulan</small></div></div>
+      <a href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20menyewa%20*BOT%20STORE%20-%205%20BULAN*%20seharga%2050K." target="_blank" class="btn-buy">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Buy Now
+      </a>
+    </div>
+  </div>
+
+  <p style="text-align:center;color:var(--muted);margin-top:44px;font-size:.9rem;">
+    Untuk paket sewa lainnya, silakan <a href="https://wa.me/62882000572938?text=Halo%20Owner%2C%20saya%20ingin%20tanya%20paket%20sewa%20bot%20lainnya." target="_blank" style="color:var(--blue-light);font-weight:600;">tanya owner langsung</a>.
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak">
+  <a href="#" class="logo-wrap">
+    <div class="logo-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+        <path d="M3 7v10l9 4 9-4V7"/>
+        <path d="M12 11v10"/>
+      </svg>
+    </div>
+    <div class="logo">CiKiZz <span>Store</span></div>
+  </a>
+  <p>Premium Scripts & Bot WhatsApp Store</p>
+  <div>
+    <a href="https://wa.me/62882000572938" target="_blank" class="wa-link">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      0882-0005-72938
+    </a>
+  </div>
+  <div class="credit">Created By <span>ZetsuXlinee</span></div>
+  <p style="margin-top:18px;font-size:.75rem;opacity:.55;">© 2025 CiKiZz Store. All rights reserved.</p>
+</footer>
+
+<!-- FLOATING WA -->
+<a class="float-wa" href="https://wa.me/62882000572938?text=Halo%20Owner%20CiKiZz%20Store%2C%20saya%20ingin%20memesan%20produk." target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.style.opacity = 1;
+        en.target.style.transform = 'translateY(0)';
+      }
+    });
+  },{threshold:0.12});
+
+  document.querySelectorAll('.card').forEach((c,i)=>{
+    c.style.opacity = 0;
+    c.style.transform = 'translateY(30px)';
+    c.style.transition = `all .7s cubic-bezier(.2,.7,.3,1) ${(i%3)*0.08}s`;
+    io.observe(c);
+  });
+</script>
+
+</body>
+</html>
